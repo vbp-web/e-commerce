@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="01.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label>Username</label>
+        <input type="text" id="username" required>
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit">Sign In</button>
+      <a href="signup.html">Create New Account</a><br>
+      <a href="home.html">Continue as Guest</a>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const storedUser = localStorage.getItem("user");
+      const storedPass = localStorage.getItem("pass");
+      const inputUser = document.getElementById("username").value;
+      const inputPass = document.getElementById("password").value;
+
+      if (inputUser === storedUser && inputPass === storedPass) {
+        alert("Login successful!");
+        window.location.href = "home.html";
+      } else {
+        alert("Incorrect username or password.");
+      }
+    });
+  </script>
+</body>
+</html>
+
